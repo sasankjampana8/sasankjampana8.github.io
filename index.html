@@ -1,71 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sasank Jampana | Portfolio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="images/—Pngtree—burning fire_5637806.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
-<body>
-
-    <!-- Navbar -->
-    <nav>
-        <div class="container">
-            <div class="logo">Sasank Jampana</div>
-            <ul class="nav-links">
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="your_resume_link.pdf" class="btn">Resume</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="container">
-            <h1>Sasank Jampana</h1>
-            <h2>Data Scientist</h2>
-            <p>Passionate about AI and Data Science. I love solving real-world problems with technology.</p>
-            <a href="your_resume_link.pdf" class="btn">Download Resume</a>
+<body class="bg-gray-900 text-white">
+    
+    <!-- Front Page -->
+    <section class="h-[70vh] flex flex-col justify-center items-center text-center">
+        <h1 class="text-6xl font-bold">Sasank Jampana</h1>
+        <p class="text-2xl mt-4">Data Scientist</p>
+    </section>
+    
+    <!-- Resume Section -->
+    <section class="p-10 text-center w-[90%] mx-auto">
+        <h2 class="text-4xl font-bold">Resume</h2>
+        <div class="mt-6 border border-gray-700 p-4 h-[600px] overflow-y-scroll rounded-lg">
+            <embed src="Sasank_Resume.pdf" type="application/pdf" width="100%" height="100%">
         </div>
     </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>My Top Skills</h2>
-        <div class="skills-container">
-            <div class="skill-box">
-                <h3>AI / ML</h3>
-                <p>Machine Learning, NLP, Deep Learning</p>
-            </div>
-            <div class="skill-box">
-                <h3>Cloud</h3>
-                <p>AWS, Azure</p>
-            </div>
-            <div class="skill-box">
-                <h3>Data Engineering</h3>
-                <p>SQL, Spark, ETL Pipelines</p>
-            </div>
-            <div class="skill-box">
-                <h3>Web Dev</h3>
-                <p>React, Next.js, APIs</p>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Feel free to reach out for collaborations or inquiries.</p>
-        <div class="contact-info">
-            <p><i class="fas fa-envelope"></i> sasank@example.com</p>
-            <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></p>
-            <p><i class="fab fa-github"></i> <a href="https://github.com/yourgithub" target="_blank">GitHub</a></p>
-        </div>
+    <section class="p-10 text-center w-[90%] mx-auto">
+        <h2 class="text-4xl font-bold">Contact Me</h2>
+        <form action="https://formspree.io/f/{your_form_id}" method="POST" class="mt-6 space-y-4">
+            <input type="text" name="name" placeholder="Your Name" required class="block w-1/2 mx-auto p-3 rounded-lg text-black">
+            <input type="email" name="email" placeholder="Your Email" required class="block w-1/2 mx-auto p-3 rounded-lg text-black">
+            <textarea name="message" placeholder="Your Message" required class="block w-1/2 mx-auto p-3 rounded-lg text-black"></textarea>
+            <button type="submit" class="bg-blue-600 px-6 py-3 rounded-lg text-white font-semibold hover:bg-blue-700 transition">Send</button>
+        </form>
     </section>
-
+    
 </body>
 </html>
