@@ -1,27 +1,281 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sasank Jampana - Portfolio</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Force light UI controls (no dark theme) -->
+    <meta name="color-scheme" content="light" />
+    <title>Sasank Jampana — Data Scientist</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #fafafa;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+      :root{
+        /* Cherry Red on White */
+        --bg: #ffffff;
+        --fg: #0f172a;
+        --muted: #475569;
+
+        --card: #ffffff;
+        --border: #ffd6de;         /* soft cherry border */
+        --chip: #ffe8ee;           /* pale cherry chip */
+
+        --accent: #d21f3c;         /* cherry */
+        --accent-contrast: #ffffff;
+        --ring: #ff6b81;
+
+        --radius-lg: 16px;
+        --radius-md: 12px;
+        --radius-sm: 10px;
+
+        --shadow: 0 1px 2px rgba(16,24,40,.04), 0 2px 8px rgba(16,24,40,.06);
+      }
+
+      /* Base */
+      *{ box-sizing: border-box; }
+      html, body{ height:100%; }
+      html{ scroll-behavior:smooth; }
+      body{
+        margin:0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        line-height:1.6;
+        background: var(--bg);
+        color: var(--fg);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Layout: sidebar left, content fills */
+      .shell{
+        width:100%;
+        margin:0;
+        padding: 16px 16px 56px 8px;     /* slight left padding so rounded corners show */
+        display:grid;
+        grid-template-columns: 300px minmax(0,1fr);
+        gap:24px;
+      }
+      @media (max-width: 860px){
+        .shell{
+          grid-template-columns: 1fr;
+          padding: 12px 16px 56px 16px;
         }
-        h1 {
-            text-align: center;
-            font-weight: normal;
-        }
+      }
+
+      /* Sidebar */
+      aside{
+        position: sticky;
+        top: 12px;                      /* stick near top */
+        align-self: start;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding:16px;
+        box-shadow: var(--shadow);
+      }
+      .id{ display:grid; gap:6px; margin-bottom:12px; }
+      .name{ margin:0; font-size:22px; letter-spacing:.2px; }
+      .role{ margin:0; color:var(--muted); font-size:14px; }
+
+      nav[aria-label="Sections"] ul{
+        list-style:none;
+        padding:0;
+        margin:12px 0 0 0;
+        display:grid;
+        gap:10px;
+      }
+      nav a{
+        display:block;
+        text-decoration:none;
+        color:var(--fg);
+        background: var(--chip);
+        border:1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 12px 14px;
+        font-size:14px;
+      }
+      nav a:hover{ outline:2px solid var(--border); }
+      nav a:focus-visible{ outline:2px solid var(--ring); outline-offset:2px; }
+
+      /* Main */
+      main{ display:grid; gap:20px; }
+      section{
+        background: var(--card);
+        border:1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding:16px;
+        box-shadow: var(--shadow);
+      }
+      section h2{ margin:0 0 10px 0; font-size:18px; }
+      section p{ margin:0; color:var(--muted); }
+
+      .grid{ display:grid; gap:12px; }
+      .card{
+        background: var(--card);
+        border:1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding:14px;
+        box-shadow: var(--shadow);
+      }
+      .card h3{ margin:0 0 6px 0; font-size:16px; }
+      .card p{ margin:0; color:var(--muted); font-size:14px; }
+
+      .chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+      .chip{
+        font-size:13px;
+        padding:6px 10px;
+        border-radius: 999px;
+        background: var(--chip);
+        border:1px solid var(--border);
+      }
+
+      .buttons{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+      .btn{
+        text-decoration:none;
+        border:1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding:10px 12px;
+        color:var(--fg);
+        background: var(--chip);
+        font-size:14px;
+      }
+      .btn.primary{
+        background: var(--accent);
+        color: var(--accent-contrast);
+        border-color: transparent;
+      }
+      .btn:focus-visible{ outline:2px solid var(--ring); outline-offset:2px; }
+
+      /* Skip link */
+      .skip{
+        position:absolute;
+        left:-9999px;
+        top:0;
+      }
+      .skip:focus{
+        left:16px;
+        top:16px;
+        background: var(--accent);
+        color: var(--accent-contrast);
+        padding:8px 10px;
+        border-radius: var(--radius-sm);
+      }
+
+      footer{
+        margin-top:8px;
+        color:var(--muted);
+        font-size:12px;
+        text-align:center;
+      }
     </style>
-</head>
-<body>
-    <h1>Portfolio in Progress...</h1>
-</body>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+
+    <div class="shell">
+      <aside>
+        <div class="id">
+          <h1 class="name">Sasank Jampana</h1>
+          <p class="role">Data Scientist • 2.6 years</p>
+        </div>
+        <nav aria-label="Sections">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main id="content">
+        <section id="about" aria-labelledby="about-title">
+          <h2 id="about-title">About</h2>
+          <p>Data scientist focused on NLP and pragmatic deep learning, shipping robust models and simple UIs for real users.</p>
+        </section>
+
+        <section id="experience" aria-labelledby="experience-title">
+          <h2 id="experience-title">Experience</h2>
+          <div class="grid">
+            <article class="card">
+              <h3>Data Scientist</h3>
+              <p>2.6 years building and deploying ML solutions end‑to‑end: data prep, modeling, evaluation, and delivery.</p>
+              <div class="chips">
+                <span class="chip">NLP</span>
+                <span class="chip">Modeling</span>
+                <span class="chip">MLOps</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="skills" aria-labelledby="skills-title">
+          <h2 id="skills-title">Skills</h2>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">PyTorch</span>
+            <span class="chip">scikit‑learn</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">NLP</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Vue.js</span>
+            <span class="chip">Tailwind CSS</span>
+          </div>
+        </section>
+
+        <section id="projects" aria-labelledby="projects-title">
+          <h2 id="projects-title">Projects</h2>
+          <div class="grid">
+            <article class="card">
+              <h3>Multi‑label Sentiment Analysis</h3>
+              <p>Review text pipeline with multi‑label targets, covering preprocessing, modeling, and evaluation.</p>
+              <div class="chips">
+                <span class="chip">NLP</span>
+                <span class="chip">Text Cleaning</span>
+                <span class="chip">Metrics</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>PyTorch Learning Labs</h3>
+              <p>Hands‑on notebooks for tensors, autograd, optimizers, and reproducible training loops.</p>
+              <div class="chips">
+                <span class="chip">PyTorch</span>
+                <span class="chip">Autograd</span>
+                <span class="chip">Optimization</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>CNN Fundamentals</h3>
+              <p>From convolutions and pooling to training image classifiers with clear ablations.</p>
+              <div class="chips">
+                <span class="chip">CNN</span>
+                <span class="chip">Computer Vision</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Minimal UIs with Vue + Tailwind</h3>
+              <p>Lightweight ML demo interfaces focused on clarity, speed, and good defaults.</p>
+              <div class="chips">
+                <span class="chip">Vue</span>
+                <span class="chip">Tailwind</span>
+                <span class="chip">UX</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-title">
+          <h2 id="contact-title">Contact</h2>
+          <div class="buttons">
+            <a class="btn primary" href="#" aria-label="Email">Email</a>
+            <a class="btn" href="#" aria-label="LinkedIn">LinkedIn</a>
+            <a class="btn" href="#" aria-label="GitHub">GitHub</a>
+          </div>
+        </section>
+
+        <footer role="contentinfo">© <span id="year"></span> Sasank Jampana</footer>
+      </main>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
