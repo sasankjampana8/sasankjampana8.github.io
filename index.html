@@ -1,281 +1,321 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Force light UI controls (no dark theme) -->
-    <meta name="color-scheme" content="light" />
-    <title>Sasank Jampana — Data Scientist</title>
-    <style>
-      :root{
-        /* Cherry Red on White */
-        --bg: #ffffff;
-        --fg: #0f172a;
-        --muted: #475569;
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sasank Jampana · AI Engineer</title>
+  <meta name="description" content="Portfolio of Sasank Jampana, AI Engineer and MLE." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f8f3ee;
+      --paper:#fff9f2;
+      --ink:#1c1b1a;
+      --muted:#5d5a57;
+      --line:#e3d8ce;
+      --accent:#1f7a6f;
+      --accent-2:#ff7a59;
+      --shadow:0 20px 50px rgba(28,27,26,.12);
+      --radius:18px;
+    }
 
-        --card: #ffffff;
-        --border: #ffd6de;         /* soft cherry border */
-        --chip: #ffe8ee;           /* pale cherry chip */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 400px at 10% -5%, rgba(255,122,89,.18), transparent 60%),
+        radial-gradient(800px 360px at 90% 10%, rgba(31,122,111,.18), transparent 60%),
+        linear-gradient(180deg, #f9f4ef, #f3ece6 70%);
+      color:var(--ink);
+      font-family:"Space Grotesk", system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
 
-        --accent: #d21f3c;         /* cherry */
-        --accent-contrast: #ffffff;
-        --ring: #ff6b81;
+    .container{max-width:1100px; margin:0 auto; padding:0 22px}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; border:1px solid var(--line); background:var(--paper); font-size:13px}
 
-        --radius-lg: 16px;
-        --radius-md: 12px;
-        --radius-sm: 10px;
+    nav{
+      position:sticky; top:0; z-index:10;
+      background:rgba(248,243,238,.8);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{font-weight:700; letter-spacing:.02em}
+    .links{display:flex; gap:18px; align-items:center; font-size:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 14px; border-radius:12px; border:1px solid var(--ink); font-weight:600;
+      background:var(--ink); color:#fff; box-shadow:var(--shadow)
+    }
+    .btn.ghost{background:transparent; color:var(--ink); border-color:var(--line); box-shadow:none}
 
-        --shadow: 0 1px 2px rgba(16,24,40,.04), 0 2px 8px rgba(16,24,40,.06);
-      }
+    header{
+      padding:50px 0 30px;
+      min-height:72vh;
+      display:flex; align-items:center;
+    }
+    .hero{
+      display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center;
+      background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+      padding:32px; box-shadow:var(--shadow); position:relative; overflow:hidden;
+    }
+    .hero > *{position:relative; z-index:1}
+    .hero h1{font-size:46px; line-height:1.05; margin:10px 0 12px}
+    .hero p{color:var(--muted); font-size:18px; max-width:55ch}
+    .hero .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
 
-      /* Base */
-      *{ box-sizing: border-box; }
-      html, body{ height:100%; }
-      html{ scroll-behavior:smooth; }
-      body{
-        margin:0;
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        line-height:1.6;
-        background: var(--bg);
-        color: var(--fg);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
+    .bubble-field{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;
+    }
+    .bubble{
+      display:inline-flex; align-items:center;
+      border-radius:999px; padding:8px 12px; font-size:12px;
+      border:1px solid var(--line); background:#fff; color:#2e2a26;
+    }
 
-      /* Layout: sidebar left, content fills */
-      .shell{
-        width:100%;
-        margin:0;
-        padding: 16px 16px 56px 8px;     /* slight left padding so rounded corners show */
-        display:grid;
-        grid-template-columns: 300px minmax(0,1fr);
-        gap:24px;
-      }
-      @media (max-width: 860px){
-        .shell{
-          grid-template-columns: 1fr;
-          padding: 12px 16px 56px 16px;
-        }
-      }
+    section{padding:46px 0; scroll-margin-top:84px}
+    .section-h{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:18px}
+    .section-h h2{font-size:26px; margin:0}
+    .muted{color:var(--muted)}
 
-      /* Sidebar */
-      aside{
-        position: sticky;
-        top: 12px;                      /* stick near top */
-        align-self: start;
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding:16px;
-        box-shadow: var(--shadow);
-      }
-      .id{ display:grid; gap:6px; margin-bottom:12px; }
-      .name{ margin:0; font-size:22px; letter-spacing:.2px; }
-      .role{ margin:0; color:var(--muted); font-size:14px; }
+    .project-grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:18px}
+    .card{
+      grid-column:span 4; background:var(--paper); border:1px solid var(--line);
+      border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);
+      display:flex; flex-direction:column; gap:10px; position:relative; overflow:hidden;
+    }
+    .card h3{margin:4px 0 0}
+    .card p{margin:0; color:var(--muted)}
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{display:inline-flex; padding:4px 10px; border-radius:999px; border:1px solid var(--line); font-size:12px; background:#fff}
+    .card .actions{display:flex; gap:10px; margin-top:auto}
 
-      nav[aria-label="Sections"] ul{
-        list-style:none;
-        padding:0;
-        margin:12px 0 0 0;
-        display:grid;
-        gap:10px;
-      }
-      nav a{
-        display:block;
-        text-decoration:none;
-        color:var(--fg);
-        background: var(--chip);
-        border:1px solid var(--border);
-        border-radius: var(--radius-md);
-        padding: 12px 14px;
-        font-size:14px;
-      }
-      nav a:hover{ outline:2px solid var(--border); }
-      nav a:focus-visible{ outline:2px solid var(--ring); outline-offset:2px; }
+    .skills-grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:16px}
+    .skill-card{
+      grid-column:span 4; background:#fff; border:1px solid var(--line);
+      border-radius:16px; padding:16px; box-shadow:var(--shadow)
+    }
+    .skill-card h4{margin:0 0 8px}
+    .skill-card ul{margin:0; padding-left:18px; color:var(--muted)}
 
-      /* Main */
-      main{ display:grid; gap:20px; }
-      section{
-        background: var(--card);
-        border:1px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding:16px;
-        box-shadow: var(--shadow);
-      }
-      section h2{ margin:0 0 10px 0; font-size:18px; }
-      section p{ margin:0; color:var(--muted); }
+    .contact-grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:18px}
+    .contact-card{
+      grid-column:span 6; background:var(--paper); border:1px solid var(--line);
+      border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)
+    }
+    .link-list{display:grid; gap:10px}
+    .link-item{
+      display:flex; align-items:center; justify-content:space-between; padding:10px 12px;
+      border:1px solid var(--line); border-radius:12px; background:#fff
+    }
 
-      .grid{ display:grid; gap:12px; }
-      .card{
-        background: var(--card);
-        border:1px solid var(--border);
-        border-radius: var(--radius-md);
-        padding:14px;
-        box-shadow: var(--shadow);
-      }
-      .card h3{ margin:0 0 6px 0; font-size:16px; }
-      .card p{ margin:0; color:var(--muted); font-size:14px; }
+    footer{padding:36px 0 50px; color:var(--muted)}
 
-      .chips{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
-      .chip{
-        font-size:13px;
-        padding:6px 10px;
-        border-radius: 999px;
-        background: var(--chip);
-        border:1px solid var(--border);
-      }
+    .reveal{opacity:0; transform:translateY(10px); animation:reveal .7s ease forwards}
+    .reveal.delay-1{animation-delay:.15s}
+    .reveal.delay-2{animation-delay:.3s}
+    .reveal.delay-3{animation-delay:.45s}
+    @keyframes reveal{to{opacity:1; transform:translateY(0)}}
 
-      .buttons{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
-      .btn{
-        text-decoration:none;
-        border:1px solid var(--border);
-        border-radius: var(--radius-sm);
-        padding:10px 12px;
-        color:var(--fg);
-        background: var(--chip);
-        font-size:14px;
-      }
-      .btn.primary{
-        background: var(--accent);
-        color: var(--accent-contrast);
-        border-color: transparent;
-      }
-      .btn:focus-visible{ outline:2px solid var(--ring); outline-offset:2px; }
-
-      /* Skip link */
-      .skip{
-        position:absolute;
-        left:-9999px;
-        top:0;
-      }
-      .skip:focus{
-        left:16px;
-        top:16px;
-        background: var(--accent);
-        color: var(--accent-contrast);
-        padding:8px 10px;
-        border-radius: var(--radius-sm);
-      }
-
-      footer{
-        margin-top:8px;
-        color:var(--muted);
-        font-size:12px;
-        text-align:center;
-      }
-    </style>
-  </head>
-  <body>
-    <a class="skip" href="#content">Skip to content</a>
-
-    <div class="shell">
-      <aside>
-        <div class="id">
-          <h1 class="name">Sasank Jampana</h1>
-          <p class="role">Data Scientist • 2.6 years</p>
-        </div>
-        <nav aria-label="Sections">
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </aside>
-
-      <main id="content">
-        <section id="about" aria-labelledby="about-title">
-          <h2 id="about-title">About</h2>
-          <p>Data scientist focused on NLP and pragmatic deep learning, shipping robust models and simple UIs for real users.</p>
-        </section>
-
-        <section id="experience" aria-labelledby="experience-title">
-          <h2 id="experience-title">Experience</h2>
-          <div class="grid">
-            <article class="card">
-              <h3>Data Scientist</h3>
-              <p>2.6 years building and deploying ML solutions end‑to‑end: data prep, modeling, evaluation, and delivery.</p>
-              <div class="chips">
-                <span class="chip">NLP</span>
-                <span class="chip">Modeling</span>
-                <span class="chip">MLOps</span>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="skills" aria-labelledby="skills-title">
-          <h2 id="skills-title">Skills</h2>
-          <div class="chips">
-            <span class="chip">Python</span>
-            <span class="chip">PyTorch</span>
-            <span class="chip">scikit‑learn</span>
-            <span class="chip">Pandas</span>
-            <span class="chip">NLP</span>
-            <span class="chip">SQL</span>
-            <span class="chip">Vue.js</span>
-            <span class="chip">Tailwind CSS</span>
-          </div>
-        </section>
-
-        <section id="projects" aria-labelledby="projects-title">
-          <h2 id="projects-title">Projects</h2>
-          <div class="grid">
-            <article class="card">
-              <h3>Multi‑label Sentiment Analysis</h3>
-              <p>Review text pipeline with multi‑label targets, covering preprocessing, modeling, and evaluation.</p>
-              <div class="chips">
-                <span class="chip">NLP</span>
-                <span class="chip">Text Cleaning</span>
-                <span class="chip">Metrics</span>
-              </div>
-            </article>
-            <article class="card">
-              <h3>PyTorch Learning Labs</h3>
-              <p>Hands‑on notebooks for tensors, autograd, optimizers, and reproducible training loops.</p>
-              <div class="chips">
-                <span class="chip">PyTorch</span>
-                <span class="chip">Autograd</span>
-                <span class="chip">Optimization</span>
-              </div>
-            </article>
-            <article class="card">
-              <h3>CNN Fundamentals</h3>
-              <p>From convolutions and pooling to training image classifiers with clear ablations.</p>
-              <div class="chips">
-                <span class="chip">CNN</span>
-                <span class="chip">Computer Vision</span>
-              </div>
-            </article>
-            <article class="card">
-              <h3>Minimal UIs with Vue + Tailwind</h3>
-              <p>Lightweight ML demo interfaces focused on clarity, speed, and good defaults.</p>
-              <div class="chips">
-                <span class="chip">Vue</span>
-                <span class="chip">Tailwind</span>
-                <span class="chip">UX</span>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="contact" aria-labelledby="contact-title">
-          <h2 id="contact-title">Contact</h2>
-          <div class="buttons">
-            <a class="btn primary" href="#" aria-label="Email">Email</a>
-            <a class="btn" href="#" aria-label="LinkedIn">LinkedIn</a>
-            <a class="btn" href="#" aria-label="GitHub">GitHub</a>
-          </div>
-        </section>
-
-        <footer role="contentinfo">© <span id="year"></span> Sasank Jampana</footer>
-      </main>
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .card{grid-column:span 6}
+      .skill-card{grid-column:span 6}
+      .contact-card{grid-column:span 12}
+    }
+    @media (max-width:640px){
+      .links{display:none}
+      header{min-height:auto; display:block}
+      .hero h1{font-size:36px}
+      .card{grid-column:span 12}
+      .skill-card{grid-column:span 12}
+      .section-h{flex-direction:column; align-items:flex-start; gap:6px}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Sasank Jampana</a>
+      <div class="links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a class="btn ghost" href="https://github.com/your-handle" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
+  </nav>
 
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
+  <a id="top"></a>
+  <header>
+    <div class="container hero reveal">
+      <div>
+        <span class="pill">AI Engineer · MLE @ Intellect Design Arena</span>
+        <h1>Hi, I'm Sasank. I build practical AI systems that ship.</h1>
+        <p>
+          3 years of experience delivering ML and LLM products from research to production.
+          I focus on fast experimentation, strong evaluation, and dependable deployment.
+        </p>
+        <div class="meta">
+          <span class="pill">Based in India</span>
+          <span class="pill">Open to collaborations</span>
+          <span class="pill">AI + MLOps</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn" href="#projects">Explore Projects</a>
+          <a class="btn ghost" href="mailto:youremail@example.com">Email Me</a>
+        </div>
+      </div>
+
+      <div class="reveal delay-1">
+        <h2 style="margin:0 0 8px; font-family:'Source Serif 4', serif; font-weight:600">Toolbox</h2>
+        <p class="muted" style="margin:0 0 12px">
+          Bubble drops of frameworks and platforms I use to build, fine-tune, and deploy.
+        </p>
+        <div class="bubble-field" aria-label="Tool bubbles">
+          <span class="bubble">LangChain</span>
+          <span class="bubble">PyTorch</span>
+          <span class="bubble">AWS</span>
+          <span class="bubble">FastAPI</span>
+          <span class="bubble">Docker</span>
+          <span class="bubble">Hugging Face</span>
+          <span class="bubble">RAG</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-h reveal">
+        <h2>Projects</h2>
+        <span class="muted">Selected work · cards link to GitHub/demo</span>
+      </div>
+      <div class="project-grid">
+        <article class="card reveal delay-1">
+          <span class="pill">LLM Apps</span>
+          <h3>Enterprise Knowledge RAG</h3>
+          <p>Indexing multi-format documents, tuned retrieval, and grounded responses with citations.</p>
+          <div class="chips">
+            <span class="chip">LangChain</span>
+            <span class="chip">FAISS</span>
+            <span class="chip">AWS</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/your-handle/project-1" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn ghost" href="https://demo-link.com" target="_blank" rel="noopener">Live Demo</a>
+          </div>
+        </article>
+        <article class="card reveal delay-2">
+          <span class="pill">Computer Vision</span>
+          <h3>Defect Detection Pipeline</h3>
+          <p>Built a training pipeline with augmentation, monitoring, and automated model comparison.</p>
+          <div class="chips">
+            <span class="chip">PyTorch</span>
+            <span class="chip">MLflow</span>
+            <span class="chip">Docker</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/your-handle/project-2" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn ghost" href="https://demo-link.com" target="_blank" rel="noopener">Live Demo</a>
+          </div>
+        </article>
+        <article class="card reveal delay-3">
+          <span class="pill">MLOps</span>
+          <h3>Feature Store + Model Serving</h3>
+          <p>Production-ready pipeline with versioned features, CI checks, and low-latency serving.</p>
+          <div class="chips">
+            <span class="chip">FastAPI</span>
+            <span class="chip">Redis</span>
+            <span class="chip">AWS</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="https://github.com/your-handle/project-3" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn ghost" href="https://demo-link.com" target="_blank" rel="noopener">Live Demo</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-h reveal">
+        <h2>Skills</h2>
+        <span class="muted">Core areas of strength</span>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card reveal delay-1">
+          <h4>AI + LLMs</h4>
+          <ul>
+            <li>Prompting, RAG, evaluation</li>
+            <li>LLM app architecture</li>
+            <li>Embeddings + vector search</li>
+          </ul>
+        </div>
+        <div class="skill-card reveal delay-2">
+          <h4>ML Engineering</h4>
+          <ul>
+            <li>Model training, tuning, tracking</li>
+            <li>Deployment with APIs</li>
+            <li>Monitoring + observability</li>
+          </ul>
+        </div>
+        <div class="skill-card reveal delay-3">
+          <h4>Cloud + DevOps</h4>
+          <ul>
+            <li>AWS (S3, EC2, Lambda)</li>
+            <li>Docker, CI/CD</li>
+            <li>Infrastructure hygiene</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-h reveal">
+        <h2>Contact</h2>
+        <span class="muted">Let's build something useful</span>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card reveal delay-1">
+          <h3 style="margin:0 0 6px">Say hello</h3>
+          <p class="muted" style="margin:0 0 14px">Reach out for collaborations, consulting, or open roles.</p>
+          <div class="link-list">
+            <div class="link-item"><span>Email</span><a href="mailto:youremail@example.com">youremail@example.com</a></div>
+            <div class="link-item"><span>Location</span><span>India</span></div>
+            <div class="link-item"><span>Role</span><span>MLE @ Intellect Design Arena</span></div>
+          </div>
+        </div>
+        <div class="contact-card reveal delay-2">
+          <h3 style="margin:0 0 6px">Elsewhere</h3>
+          <p class="muted" style="margin:0 0 14px">Find my code and long-form notes.</p>
+          <div class="link-list">
+            <div class="link-item"><span>GitHub</span><a href="https://github.com/your-handle" target="_blank" rel="noopener">github.com/your-handle</a></div>
+            <div class="link-item"><span>LinkedIn</span><a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">linkedin.com/in/your-handle</a></div>
+            <div class="link-item"><span>Resume</span><a href="/resume.pdf" target="_blank" rel="noopener">Download PDF</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> Sasank Jampana. Built for GitHub Pages.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
